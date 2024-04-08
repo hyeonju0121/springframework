@@ -19,11 +19,30 @@
 	</head>
 	
 	<body>
-		<div class="card">
-		   <div class="card-header">content</div>
-		    <div class="card-body">
-		    	content
-		    </div>
+		<!-- d-flex : row 방향 / vh: viewport 100%  -->
+		<div class="d-flex flex-column vh-100">
+			<%@ include file="/WEB-INF/views/common/header.jsp" %>
+			<div class="flex-grow-1 m-2">
+				<div class="d-flex row">
+					<!-- category -->
+					<div class="col-md-4">
+						<%@ include file="/WEB-INF/views/common/menu.jsp" %>
+					</div>
+					
+					<!-- content -->
+					<div class="border col-md-8">
+						<!-- #################################################### -->
+						<div class="card">
+							<div class="card-header">content</div>
+							<div class="card-body">
+					
+							</div>
+						</div>
+						<!-- #################################################### -->
+					
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
