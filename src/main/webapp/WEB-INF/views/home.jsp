@@ -1,3 +1,4 @@
+<%-- page 지시자: page 서버(WAS-Tomcat)에서 JSP 해석하는 방법을 기술 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,12 +22,17 @@
 	<body>
 		<!-- d-flex : row 방향 / vh: viewport 100%  -->
 		<div class="d-flex flex-column vh-100">
+			<%-- (include 지시자) : 소스 복사 개념 --%>
 			<%@ include file="/WEB-INF/views/common/header.jsp" %>
+			
 			<div class="flex-grow-1 m-2">
 				<div class="d-flex row">
 					<!-- category -->
 					<div class="col-md-4">
-						<%@ include file="/WEB-INF/views/common/menu.jsp" %>
+						<%-- <%@ include file="/WEB-INF/views/common/menu.jsp" %> --%>
+						
+						<%-- (jsp:include 액션) 외부에서 실행하고 결과만 삽입 --%>
+						<jsp:include page="/WEB-INF/views/common/menu.jsp"/>
 					</div>
 					
 					<!-- content -->
@@ -39,7 +45,6 @@
 							</div>
 						</div>
 						<!-- #################################################### -->
-					
 					</div>
 				</div>
 			</div>
