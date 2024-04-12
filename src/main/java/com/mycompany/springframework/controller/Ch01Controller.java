@@ -3,6 +3,7 @@ package com.mycompany.springframework.controller;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +16,11 @@ public class Ch01Controller {
 //			LoggerFactory.getLogger(Ch01Controller.class);
 	
 	@RequestMapping("/content")
-	public String content() {
+	public String content(String chNum, Model model) {
 //		LOGGER.info("content() 실행"); -> lombok 을 사용안할 경우
 		log.info("content() 실행");
+		
+		model.addAttribute(chNum, chNum);
 		return "ch01/content";
 	}
 
