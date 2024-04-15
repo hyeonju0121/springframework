@@ -20,7 +20,7 @@ public class Ch01Controller {
 //		LOGGER.info("content() 실행"); -> lombok 을 사용안할 경우
 		log.info("content() 실행");
 		
-		model.addAttribute(chNum, chNum);
+		model.addAttribute("chNum", "ch01");
 		return "ch01/content";
 	}
 

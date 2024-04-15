@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mycompany.springframework.dto.FileInfo;
+import com.mycompany.springframework.dto.Ch02FileInfo;
+import com.mycompany.springframework.interceptor.Auth;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +40,7 @@ public class Ch02Controller {
 		log.info("bkind: " + bkind);
 		log.info("bno: " + bno);
 		
-		model.addAttribute("chNum", chNum);
+		model.addAttribute("chNum", "ch02");
 		
 		return "ch02/getMethod";
 	}
@@ -64,7 +65,7 @@ public class Ch02Controller {
        log.info("mid: " + mid);
        log.info("mpassword: " + mpassword);
        
-       model.addAttribute("chNum", chNum);
+       model.addAttribute("chNum", "ch02");
        return "ch02/postMethod";
     }
     
@@ -104,11 +105,11 @@ public class Ch02Controller {
     }
     
     @GetMapping("/modelAndViewReturn")
-    public ModelAndView modelAndViewReturn(String chNum) {
+    public ModelAndView modelAndViewReturn() {
     	log.info("modelAndViewReturn() 실행");
     	// modelandview : data(model)와 jsp(view) 를 갖고 있는 객체
     	ModelAndView modelAndView = new ModelAndView();
-    	modelAndView.addObject("chNum", chNum); // data 추가
+    	modelAndView.addObject("chNum", "ch02"); // data 추가
     	modelAndView.addObject("login", true); // data 추가
     	modelAndView.addObject("userName", "Yu hyun ju"); // data 추가
     	modelAndView.setViewName("ch02/modelAndViewReturn"); // view 추가
@@ -159,7 +160,7 @@ public class Ch02Controller {
     @GetMapping("/objectReturn")
     public String objectReturn(String chNum, Model model) {
     	
-    	model.addAttribute("chNum", chNum);
+    	model.addAttribute("chNum", "ch02");
     	return "ch02/objectReturn";
     }
     
@@ -178,13 +179,29 @@ public class Ch02Controller {
     @GetMapping(value="/objectReturnJson2",
     		produces="application/json; charset=UTF-8")
     @ResponseBody // return 된 객체를 JSON으로 변환하고 응답 본문에 넣겠다.
-    public FileInfo objectReturnJson2() {
+    public Ch02FileInfo objectReturnJson2() {
     	log.info("objectReturnJson2() 실행");
-    	FileInfo fileInfo = new FileInfo();
+    	Ch02FileInfo fileInfo = new Ch02FileInfo();
     	fileInfo.setFileName("photo20.jpg");
     	fileInfo.setInfo("귀여운 푸바옹");
     	
     	return fileInfo;
+    }
+    
+    @GetMapping("/testAuthInterceptor1")
+    public String testAuthInterceptor1(String chNum, Model model) {
+    	log.info("testAuthInterceptor1() 실행");
+    	model.addAttribute("chNum", "ch02");
+    	return "ch02/testAuthInterceptor1";
+    }
+    
+    // @Auth annotation 이 붙어있으면 무조건 로그인 인증을 해야만 실행가능하다고 가정함
+    @GetMapping("/testAuthInterceptor2")
+    @Auth
+    public String testAuthInterceptor2(String chNum, Model model) {
+    	log.info("testAuthInterceptor2() 실행");
+    	model.addAttribute("chNum", "ch02");
+    	return "ch02/testAuthInterceptor2";
     }
     
 }
