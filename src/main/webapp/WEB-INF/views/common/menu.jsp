@@ -57,4 +57,19 @@
 	      </div>
 	    </div>
 	  </div>
+	  <div class="accordion-item">
+	    <h2 class="accordion-header">
+	      <button class="accordion-button ${chNum=='ch04'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+	        Ch04. 폼 유효성 검사
+	      </button>
+	    </h2>
+	    <div id="collapseFour" class="accordion-collapse collapse ${chNum=='ch04'?'show':''}" data-bs-parent="#accordionExample">
+	      <div class="accordion-body">
+	      	<ul>
+	      		<li><a href="${pageContext.request.contextPath}/ch04/loginForm">로그인 폼</a></li>
+	      		<li><a href="${pageContext.request.contextPath}/ch04/signUpForm">회원가입 폼</a></li>
+	      	</ul>
+	      </div>
+	    </div>
+	  </div>
 	</div>
