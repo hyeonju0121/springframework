@@ -21,7 +21,7 @@ public class Ch10ExceptionHandler {
 		log.info("실행");
 		return "ch10/error500_null";
 	}
-
+	
 	@ExceptionHandler(Ch10CustomException.class)
 	// 예외객체를 받을 수 있도록 매개변수 타입 설정 model로 <!-- 예외에 대한 매개변수 선언 -->
 	public String handlerCh10CustomException(Ch10CustomException e, Model model) {

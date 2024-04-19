@@ -37,7 +37,7 @@ public class Ch10Controller {
 		
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/handlingException3")
 	public String handlingException3() throws Ch10CustomException {
 		if(true) {
