@@ -160,4 +160,20 @@
          </div>
        </div>
      </div>
+     
+     <div class="accordion-item">
+       <h2 class="accordion-header">
+         <button class="accordion-button ${chNum=='ch10'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+           Ch10. 예외 처리
+         </button>
+       </h2>
+       <div id="collapseTen" class="accordion-collapse collapse ${chNum=='ch10'?'show':''}" data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <ul>
+               <li><a href="${pageContext.request.contextPath}/ch10/handlingException1">try-catch 이용</a></li>
+               <li><a href="${pageContext.request.contextPath}/ch10/handlingException2">@ExceptionHandler 이용</a></li>
+            </ul>
+         </div>
+       </div>
+     </div>
    </div>
