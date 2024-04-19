@@ -17,6 +17,12 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/dispatcher/*.xml</param-value>
 		</init-param>
+		
+		<init-param>
+	      <param-name>throwExceptionIfNoHandlerFound</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+		
 		<load-on-startup>1</load-on-startup>
 		
 		<!-- Multipart/form-data 를 해석하기 위한 설정 -->
@@ -31,6 +37,7 @@
 			임시 파일로 저장해야할 파일의 크기 지정 (요청 처리가 끝나면 임시 파일 삭제)
 			<file-size-threshold>1024</file-size-threshold>
 		</multipart-config> -->
+		
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>

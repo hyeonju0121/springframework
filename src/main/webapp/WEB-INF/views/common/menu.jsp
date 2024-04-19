@@ -172,6 +172,9 @@
             <ul>
                <li><a href="${pageContext.request.contextPath}/ch10/handlingException1">try-catch 이용</a></li>
                <li><a href="${pageContext.request.contextPath}/ch10/handlingException2">@ExceptionHandler 이용</a></li>
+               <li><a href="${pageContext.request.contextPath}/ch10/handlingException3">CustomException 이용</a></li>
+               <li><a href="${pageContext.request.contextPath}/ch10/handlingException4">기타 500 예외 처리</a></li>
+               <li><a href="${pageContext.request.contextPath}/ch10/aaaaaaaaaaaaa">404 처리</a></li>
             </ul>
          </div>
        </div>
