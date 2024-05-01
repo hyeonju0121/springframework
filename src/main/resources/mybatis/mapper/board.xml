@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13BoardDao"> 
+
+	<insert id="insert" parameterType="Ch13Board">
+		<!-- 
+		시퀀스를 사용할 때만 이 방법 사용.. 
+		주문 조회 할 때 사용 많이 된다! -> 
+		주문 아이템 테이블에 주문 번호가 저장이 되야 하는데 
+		주문 번호가 시퀀스 번호라면, 주문 번호 시퀀스를 미리 조회하고, FK 로 넣어줘야함 
+		
+		order="BEFORE" 해당 쿼리부터 먼저 실행하기, 
+		AFTER -> 다음 쿼리가 실행된 후에 해당 쿼리 실행 
+		bno 가 int 타입을 명시해야 함-->
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select seq_bno.nextval from dual
+		</selectKey>
+		insert into board(bno, btitle, bcontent, bdate, mid, bhitcount)
+		values(#{bno}, #{btitle}, #{bcontent}, sysdate, #{mid}, 0)
+	</insert>
+
+</mapper>
