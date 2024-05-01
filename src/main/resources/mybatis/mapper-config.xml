@@ -4,8 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+	<settings>
+		<!-- JDBC 타입을 파라미터에 제공하지 않을때, NULL 값을 처리한 JDBC 타입을 명시함 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- 언더바가 들어있는 속성을 캐멀케이스로 작성하면, 자동으로 _ 언더바 추가 되도록 설정  -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
 	<typeAliases>
 		<typeAlias type="com.mycompany.springframework.dto.Ch13Board" alias="Ch13Board"/>
+		<typeAlias type="com.mycompany.springframework.dto.Ch13Pager" alias="Ch13Pager"/>
 	</typeAliases>
 	
 </configuration>

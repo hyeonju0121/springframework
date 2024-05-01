@@ -18,8 +18,70 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select seq_bno.nextval from dual
 		</selectKey>
-		insert into board(bno, btitle, bcontent, bdate, mid, bhitcount)
-		values(#{bno}, #{btitle}, #{bcontent}, sysdate, #{mid}, 0)
+		insert into board(
+			bno, btitle, bcontent, bdate, mid, bhitcount, 
+			battachoname, battachtype, battachdata)
+		values(
+			#{bno}, #{btitle}, #{bcontent}, sysdate, #{mid}, 0,
+			#{battachoname}, #{battachtype}, #{battachdata})
 	</insert>
-
+	
+	<select id="count" resultType="int">
+		<!-- 테이블의 전체 행수 구하기 -> int 를 반환하니까, resultType="int" 로 설정-->
+		select count(*) from board
+	</select>
+	
+	<!-- .xml 에서는 < 이걸 태그 시작으로 인식한다.
+	따라서, 쿼리 내에 <= 이거는 &lt;, > 이거는 &rt; 로 사용할 수 있다. 
+	이건 가독성이 떨어지니까 <![CDATA[ 쿼리 작성 ]]> 으로 사용할 수 도 있음 
+	페이지 처리하고 나서, 1페이지에 10개의 행이 들어가 있다면 10개의 Board 객체가 생성되야 한다
+	따라서, resultType 을 Board 객체로 설정해야함 
+	
+	ParameterType은 dao 에서 매개변수로 설정
+	resultType은 dao에서 리턴타입으로 설정
+	-->
+	 <select id="selectByPage" parameterType="Ch13Pager" resultType="Ch13Board">
+	 	<![CDATA[
+	 	select rnum, bno, btitle, bcontent, mid, bdate, bhitcount
+		from (
+		    select rownum as rnum, bno, btitle, bcontent, mid, bdate, bhitcount
+		    from (
+		        select bno, btitle, bcontent, mid, bdate, bhitcount
+		        from board
+		        order by bno desc
+		    )
+		    where rownum <= #{endRowNo}
+		)
+		where rnum >= #{startRowNo}
+		]]>
+	 </select>
+	 
+	 <select id="selectByBno" parameterType="int" resultType="Ch13Board">
+	     select bno, btitle, bcontent, mid, bdate, bhitcount, battachoname, battachtype
+	     from board
+	     where bno = #{bno}
+   	</select>
+   	
+   	<select id="selectAttachData" parameterType="int" resultType="Ch13Board">
+   		 select battachdata from board where bno = #{bno}
+   	</select>
+   	
+   	<update id="update" parameterType="Ch13Board">
+   		update board set
+   			<!-- 첨부파일이 지정 안된 경우 -->
+   		 	btitle=#{btitle},
+   		 	bcontent=#{bcontent}
+   		 <!-- 첨부파일이 지정된 경우 -->
+   		<if test="battachoname != null">
+   			,
+   		 	battachoname=#{battachoname},
+   		 	battachtype=#{battachtype},
+   		 	battachdata=#{battachdata}
+   		</if>
+   		where bno=#{bno}
+   	</update>
+   	
+   	<delete id="deleteByBno" parameterType="int">
+   		delete from board where bno=#{bno}
+   	</delete>
 </mapper>
