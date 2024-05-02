@@ -14,6 +14,7 @@
 	<typeAliases>
 		<typeAlias type="com.mycompany.springframework.dto.Ch13Board" alias="Ch13Board"/>
 		<typeAlias type="com.mycompany.springframework.dto.Ch13Pager" alias="Ch13Pager"/>
+		<typeAlias type="com.mycompany.springframework.dto.Ch15Account" alias="Ch15Account"/>
 	</typeAliases>
 	
 </configuration>
