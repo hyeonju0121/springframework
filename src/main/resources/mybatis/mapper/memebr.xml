@@ -5,4 +5,9 @@
 	
 <mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13MemberDao"> 
 
+	<select id="selectByMid" parameterType="String" resultType="Ch17Member">
+		select mid, mname,mpassword, menabled, mrole, memail
+		from member
+		where mid=#{mid}
+	</select>
 </mapper>
