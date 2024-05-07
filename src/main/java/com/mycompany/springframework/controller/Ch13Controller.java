@@ -34,6 +34,8 @@ public class Ch13Controller {
 
 	@PostMapping("/writeBoard")
 	public String writeBoard(Ch13Board board) {
+		log.info("btitle: " + board.getBtitle() + ", bcontent: " + board.getBcontent());
+		
 		// 요청 데이터의 유효성 검사
 		// 파일 원래 이름과 type 로그 출력 --------------------------
 		log.info("original filename: " + board.getBattach().getOriginalFilename());

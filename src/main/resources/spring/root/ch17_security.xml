@@ -35,8 +35,7 @@
 
 		<!-- 사이트간 요청 위조 방지 비활성화 -->
 		<!-- logout도 post 방식으로 요청(_csrf의 토큰을 전달해야함) -->
-		<security:csrf 
-			disabled="true" />
+		<security:csrf disabled="true" />
 
 		<!-- 요청 URL 권한 설정 방법1 
 			hasRole(~~) 을 갖고 있는 사람이 pattern="~~" url 만 요청할 수 있음

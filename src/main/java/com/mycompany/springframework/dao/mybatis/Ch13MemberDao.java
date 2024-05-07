@@ -9,4 +9,6 @@ public interface Ch13MemberDao {
 
 	public Ch17Member selectByMid(String mid);
 
+	public int insert(Ch17Member member);
+
 }

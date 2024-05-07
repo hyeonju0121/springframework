@@ -10,4 +10,9 @@
 		from member
 		where mid=#{mid}
 	</select>
+	
+	<insert id="insert" parameterType="Ch17Member">
+		insert into member (mid, mname, mpassword, menabled, mrole, memail)
+		values (#{mid}, #{mname}, #{mpassword}, #{menabled}, #{mrole}, #{memail})
+	</insert>
 </mapper>
