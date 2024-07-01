@@ -228,6 +228,23 @@
   
   <div class="accordion-item">
     <h2 class="accordion-header">
+      <button class="accordion-button ${chNum=='ch14'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="${chNum=='ch14'}" aria-controls="collapse14">
+        Ch14. AOP
+      </button>
+    </h2>
+    <div id="collapse14" class="accordion-collapse collapse ${chNum=='ch14'?'show':''}" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <ul>
+         <li><a href="${pageContext.request.contextPath}/ch14/adviceKind">Advice 종류</a></li>
+         <li><a href="${pageContext.request.contextPath}/ch14/loginCheck">로그인 체크</a></li>
+         <li><a href="${pageContext.request.contextPath}/ch14/runtimeCheck">실행시간 체크</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <h2 class="accordion-header">
       <button class="accordion-button ${chNum=='ch15'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="${chNum=='ch15'}" aria-controls="collapse15">
         Ch15. 트랜잭션 처리 
       </button>
